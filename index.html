@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mordecai James - Frontend Developer | HTML, CSS, JavaScript Expert</title>
 
+  <!-- Preload critical hero image for faster LCP -->
+  <link rel="preload" as="image" href="mordecai.jpeg" fetchpriority="high">
+
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,6 +148,15 @@ body {
   padding: clamp(40px, 8vw, 64px) 0;
   position: relative; 
   z-index: 5; 
+}
+
+.section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+.hero {
+  content-visibility: visible;
 }
 
 section[id] {
@@ -1591,7 +1603,9 @@ textarea {
                  class="hero-photo"
                  width="380"
                  height="380"
-                 loading="eager">
+                 loading="eager"
+                 decoding="async"
+                 fetchpriority="high">
             <div class="photo-badge">
               <div class="badge-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1632,7 +1646,8 @@ textarea {
                  class="avatar"
                  width="200" 
                  height="200"
-                 loading="lazy">
+                 loading="lazy"
+                 decoding="async">
             <h2>About Me</h2>
             <p class="muted">
               I'm a frontend developer based in Kaduna, Nigeria, passionate about building scalable, high-quality web applications 
@@ -1786,7 +1801,7 @@ textarea {
           <article class="project card">
             <h3>Church Management Platform</h3>
             <div class="project-media">
-              <img src="portfolio4.jpg" alt="Church management platform preview" width="800" height="450" loading="lazy">
+              <img src="portfolio4.jpg" alt="Church management platform preview" width="800" height="450" loading="lazy" decoding="async">
             </div>
             <p class="muted">
               Built a comprehensive church website serving 500+ weekly visitors with 40% faster load times compared to the previous site. 
@@ -1813,7 +1828,7 @@ textarea {
           <article class="project card">
             <h3>Secure Registration System</h3>
             <div class="project-media">
-              <img src="portfolio2.jpg" alt="Secure registration system preview" width="800" height="450" loading="lazy">
+              <img src="portfolio2.jpg" alt="Secure registration system preview" width="800" height="450" loading="lazy" decoding="async">
             </div>
             <p class="muted">
               Developed a user registration platform with real-time form validation, reducing invalid submissions by 95%. 
@@ -1839,7 +1854,7 @@ textarea {
           <article class="project card">
             <h3>Zoel Agro </h3>
             <div class="project-media">
-              <img src="portfolio 3.jpg" alt="E-commerce landing page preview" width="800" height="450" loading="lazy">
+              <img src="portfolio 3.jpg" alt="E-commerce landing page preview" width="800" height="450" loading="lazy" decoding="async">
             </div>
             <p class="muted">
               Designed and developed a high-converting product landing page with smooth scroll animations, 
@@ -1865,7 +1880,7 @@ textarea {
           <article class="project card">
             <h3>Portfolio Website</h3>
             <div class="project-media">
-              <img src="portfolio 1.jpg" alt="Portfolio website preview" width="800" height="450" loading="lazy">
+              <img src="portfolio 1.jpg" alt="Portfolio website preview" width="800" height="450" loading="lazy" decoding="async">
             </div>
             <p class="muted">
               Created a modern, accessible portfolio showcasing futuristic design trends with glassmorphism effects, 
@@ -1916,7 +1931,8 @@ textarea {
                    class="testimonial-avatar" 
                    width="48" 
                    height="48"
-                   loading="lazy">
+                   loading="lazy"
+                   decoding="async">
               <div>
                 <h3>Michael Adedimeji</h3>
                 <p class="muted" style="font-size: 0.85rem; margin: 0;">CEO, Zoel Agro limited</p>
@@ -1932,12 +1948,13 @@ textarea {
 
           <article class="card">
             <div class="testimonial-header">
-              <img src="" 
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><rect width='48' height='48' rx='24' fill='%2300c9ff'/><text x='50%25' y='50%25' dy='.35em' text-anchor='middle' font-family='Arial' font-size='18' fill='%23041118'>A</text></svg>" 
                    alt="A" 
                    class="testimonial-avatar" 
                    width="48" 
                    height="48"
-                   loading="lazy">
+                   loading="lazy"
+                   decoding="async">
               <div>
                 <h3>Adasa</h3>
                 <p class="muted" style="font-size: 0.85rem; margin: 0;">ui/ux Designer</p>
@@ -1957,7 +1974,8 @@ textarea {
                    class="testimonial-avatar" 
                    width="48" 
                    height="48"
-                   loading="lazy">
+                   loading="lazy"
+                   decoding="async">
               <div>
                 <h3>Emily Johnson</h3>
                 <p class="muted" style="font-size: 0.85rem; margin: 0;">UX Designer, CreativeStudio</p>
@@ -1977,7 +1995,8 @@ textarea {
                    class="testimonial-avatar" 
                    width="48" 
                    height="48"
-                   loading="lazy">
+                   loading="lazy"
+                   decoding="async">
               <div>
                 <h3>Degold David</h3>
                 <p class="muted" style="font-size: 0.85rem; margin: 0;">MD of School of Interprice</p>
@@ -1994,12 +2013,13 @@ textarea {
 
           <article class="card">
             <div class="testimonial-header">
-              <img src="" 
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><rect width='48' height='48' rx='24' fill='%231f2937'/><text x='50%25' y='50%25' dy='.35em' text-anchor='middle' font-family='Arial' font-size='16' fill='%23ffffff'>SS</text></svg>" 
                    alt="SS" 
                    class="testimonial-avatar" 
                    width="48" 
                    height="48"
-                   loading="lazy">
+                   loading="lazy"
+                   decoding="async">
               <div>
                 <h3>Samson Solomon</h3>
                 <p class="muted" style="font-size: 0.85rem; margin: 0;">CTO, BrightLabs</p>
@@ -2022,7 +2042,8 @@ textarea {
                    class="testimonial-avatar" 
                    width="48" 
                    height="48"
-                   loading="lazy">
+                   loading="lazy"
+                   decoding="async">
               <div>
                 <h3>Christine </h3>
                 <p class="muted" style="font-size: 0.85rem; margin: 0;">mobile cinematographer</p>
@@ -2351,8 +2372,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-  updateActiveNav();
+  let scrollTicking = false;
+  function onScroll() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(() => {
+      updateActiveNav();
+      updateProgress();
+      scrollTicking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   /* ========== Scroll Progress Bar ========== */
   const progressBar = document.getElementById('scrollProgress');
@@ -2364,8 +2395,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (progressBar) progressBar.style.width = `${scrolled}%`;
   }
   
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  updateProgress();
+  // updateProgress is called in the shared scroll handler above
 
   /* ========== Reveal on Scroll ========== */
   const reveals = document.querySelectorAll('.reveal');
@@ -2455,7 +2485,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let w = canvas.width = window.innerWidth;
     let h = canvas.height = window.innerHeight;
     const particles = [];
-    const particleCount = Math.min(50, Math.floor((w * h) / 15000));
+    const particleCount = Math.min(35, Math.floor((w * h) / 20000));
+    let rafId = 0;
+    let running = true;
+    let lastFrame = 0;
     
     class Particle {
       constructor() {
@@ -2486,20 +2519,32 @@ document.addEventListener('DOMContentLoaded', () => {
       particles.push(new Particle());
     }
     
-    function animate() {
+    function animate(timestamp) {
+      if (!running) return;
+      if (timestamp - lastFrame < 33) {
+        rafId = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrame = timestamp;
       ctx.clearRect(0, 0, w, h);
       particles.forEach(particle => {
         particle.update();
         particle.draw();
       });
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     }
     
-    animate();
+    rafId = requestAnimationFrame(animate);
     
     window.addEventListener('resize', () => {
       w = canvas.width = window.innerWidth;
       h = canvas.height = window.innerHeight;
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      running = !document.hidden;
+      if (!running && rafId) cancelAnimationFrame(rafId);
+      if (running) rafId = requestAnimationFrame(animate);
     });
   })();
 
