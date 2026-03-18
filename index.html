@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mordecai James - Frontend Developer | HTML, CSS, JavaScript Expert</title>
+  <title>Mord Dev - Frontend Developer</title>
 
   <!-- Preload critical hero image for faster LCP -->
   <link rel="preload" as="image" href="mordecai.jpeg" fetchpriority="high">
@@ -81,6 +81,7 @@
   --glass-blur: 8px;
   --container: 1120px;
   --transition: 320ms cubic-bezier(.16,.84,.24,1);
+  --spring: var(--transition); /* added missing variable */
   
   --spacing-xs: 8px;
   --spacing-sm: 16px;
@@ -1306,6 +1307,132 @@ textarea {
   background: rgba(255,255,255,0.02);
 }
 
+/* ── FAQ ── */
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+.faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: clamp(16px, 3vw, 22px) 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: var(--text);
+  font-size: clamp(0.92rem, 2.2vw, 1rem);
+  font-weight: 600;
+  font-family: inherit;
+  transition: color 200ms ease;
+  -webkit-appearance: none;
+}
+.faq-question:hover { color: var(--accent); }
+.faq-question.open { color: var(--accent); }
+.faq-icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--muted);
+  transition: var(--transition);
+  background: rgba(255,255,255,0.03);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+.faq-question.open .faq-icon { border-color: rgba(0,201,255,0.35); color: var(--accent); background: rgba(0,201,255,0.08); transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 500ms cubic-bezier(.16,.84,.24,1), padding 300ms ease;
+  color: var(--muted);
+  font-size: clamp(0.88rem, 2vw, 0.95rem);
+  line-height: 1.75;
+}
+.faq-answer.open { max-height: 600px; padding-bottom: clamp(16px, 3vw, 22px); }
+.faq-answer p { margin: 0; }
+
+/* ════════════════════════════════════════
+   NEW SECTIONS — Clients · Stack · Blog · CTA
+   ════════════════════════════════════════ */
+
+/* ── Clients / Brands Marquee ── */
+.clients-section {
+  padding: clamp(28px, 5vw, 48px) 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  position: relative;
+  z-index: 5;
+}
+.clients-label {
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(136,153,170,0.5);
+  margin-bottom: clamp(20px, 4vw, 32px);
+}
+.marquee-track {
+  display: flex;
+  gap: clamp(32px, 5vw, 64px);
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.client-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.02);
+  white-space: nowrap;
+  transition: all 300ms var(--spring);
+  cursor: default;
+  flex-shrink: 0;
+}
+.client-item:hover {
+  border-color: rgba(0,201,255,0.25);
+  background: rgba(0,201,255,0.05);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,201,255,0.08);
+}
+.client-icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.client-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color 200ms ease;
+}
+.client-item:hover .client-name { color: var(--text); }
+
 /* Footer */
 .footer { 
   border-top: 1px solid rgba(255,255,255,0.03); 
@@ -1500,11 +1627,7 @@ textarea {
   -webkit-appearance: none;
   appearance: none;
 }
-.footer-inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 16px;
-  }
+/* removed dead .footer-inner rule */
 }
 
 @media (max-width: 480px) {
@@ -1654,7 +1777,7 @@ textarea {
               that solve real problems. My work is guided by UX-first thinking and backed by clean, maintainable code.
             </p>
             <p class="muted">
-              Over the past 3 years, I've delivered 50+ web projects across healthcare, education, e-commerce, and faith-based sectors. 
+              Over the past 3 years, I've delivered 25+ web projects across healthcare, education, e-commerce, and faith-based sectors. 
               I specialize in converting Figma designs into pixel-perfect, performant applications with 95+ Lighthouse scores.
             </p>
             <ul class="info-list">
@@ -1854,7 +1977,7 @@ textarea {
           <article class="project card">
             <h3>Zoel Agro </h3>
             <div class="project-media">
-              <img src="portfolio 3.jpg" alt="E-commerce landing page preview" width="800" height="450" loading="lazy" decoding="async">
+              <img src="portfolio%203.jpg" alt="E-commerce landing page preview" width="800" height="450" loading="lazy" decoding="async">
             </div>
             <p class="muted">
               Designed and developed a high-converting product landing page with smooth scroll animations, 
@@ -1872,7 +1995,7 @@ textarea {
               <span class="project-tech">JavaScript</span>
               <span class="project-tech">WebP Images</span>
             </div>
-            <div class="project-actions"></div>
+            <div class="project-actions">
               <a href="https://zoel-agro.netlify.app/" class="link">view site</a>
             </div>
           </article>
@@ -1880,7 +2003,7 @@ textarea {
           <article class="project card">
             <h3>Portfolio Website</h3>
             <div class="project-media">
-              <img src="portfolio 1.jpg" alt="Portfolio website preview" width="800" height="450" loading="lazy" decoding="async">
+              <img src="portfolio%201.jpg" alt="Portfolio website preview" width="800" height="450" loading="lazy" decoding="async">
             </div>
             <p class="muted">
               Created a modern, accessible portfolio showcasing futuristic design trends with glassmorphism effects, 
@@ -2214,6 +2337,170 @@ textarea {
     </div>
   </aside>
 
+  <!-- ── FAQ (FIXED: accordion functionality added) ── -->
+  <section id="faq" class="section reveal">
+    <div class="container">
+      <header class="section-head">
+        <!-- Removed stray .section-number span for consistency -->
+        <h2>Frequently Asked Questions</h2>
+        <p class="muted">Answers to the questions clients ask most before starting a project.</p>
+      </header>
+
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q1" aria-expanded="false" aria-controls="faq-1">
+            What technologies do you use?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-1" role="region" aria-labelledby="faq-q1">
+            <p>I specialize in the core web stack: HTML5, CSS3, and vanilla JavaScript (ES6+). I also work with CSS preprocessors, Git for version control, Figma for design handoff, and tools like Lighthouse for performance auditing. I deliberately avoid unnecessary frameworks on projects where native web technologies deliver better performance and maintainability.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q2" aria-expanded="false" aria-controls="faq-2">
+            How long does a typical project take?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-2" role="region" aria-labelledby="faq-q2">
+            <p>Timelines depend on scope. A simple 5-page website typically takes 5-7 days. A professional multi-page site with custom animations and integrations usually runs 10-14 days. Complex web applications or e-commerce builds are quoted individually. I always provide a realistic timeline upfront and honor it - no delays without communication.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q3" aria-expanded="false" aria-controls="faq-3">
+            Do you work with clients outside Nigeria?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-3" role="region" aria-labelledby="faq-q3">
+            <p>Absolutely. I work with clients globally and am comfortable operating across time zones. All communication happens via email, WhatsApp, or video call. Payments are accepted via international transfer. My timezone is WAT (UTC+1) but I'm flexible with scheduling to accommodate clients in the US, UK, Europe, and beyond.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q4" aria-expanded="false" aria-controls="faq-4">
+            What do you need from me to get started?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-4" role="region" aria-labelledby="faq-q4">
+            <p>To kick off a project I need: a clear description of what you want built, any brand assets (logo, colors, fonts), reference sites you admire, and if available, Figma or design files. No designs? No problem - I can work from a brief and create wireframes before coding begins. We'll also agree on hosting and domain setup if needed.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q5" aria-expanded="false" aria-controls="faq-5">
+            Will my website be mobile-friendly and fast?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-5" role="region" aria-labelledby="faq-q5">
+            <p>Yes - without exception. Every project I build is mobile-first by design and tested on multiple screen sizes and real devices. Performance is a core deliverable, not an afterthought: I optimize images, minimize render-blocking resources, and target a Lighthouse performance score of 90+ on every project. I provide the audit report on delivery.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q6" aria-expanded="false" aria-controls="faq-6">
+            Do you offer ongoing maintenance or retainer agreements?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-6" role="region" aria-labelledby="faq-q6">
+            <p>Yes. All projects include 30 days of free post-launch support. After that, I offer flexible monthly retainer packages for clients who need regular updates, content changes, performance monitoring, or new feature additions. Retainer clients receive priority response times and discounted rates on additional work.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" id="faq-q7" aria-expanded="false" aria-controls="faq-7">
+            How do payments work?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-7" role="region" aria-labelledby="faq-q7">
+            <p>I work on a 50% deposit / 50% on delivery model for most projects. For larger engagements we can structure milestone-based payments. I accept bank transfers and mobile money. Everything is documented with a simple agreement that protects both parties and clearly defines deliverables, timelines, and revision rounds.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="muted" style="text-align:center;margin-top:32px;font-size:0.9rem;">
+        Still have questions? <a href="#contact" style="color:var(--accent);text-decoration:none;font-weight:600;">Send me a message</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CLIENTS / BRANDS MARQUEE ── -->
+  <section class="clients-section reveal" aria-label="Trusted by clients">
+    <div class="container">
+      <p class="clients-label">Trusted by businesses &amp; collaborators</p>
+      <div class="marquee-wrapper">
+        <div class="marquee-track" id="marqueeTrack">
+          <!-- Set 1 -->
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(0,201,255,0.1)">🏛️</div>
+            <span class="client-name">Zoel Agro Limited</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(81,207,102,0.1)">⛪</div>
+            <span class="client-name">Altar &amp; Throne</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(123,95,245,0.1)">🎥</div>
+            <span class="client-name">Christine Studio</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(255,212,59,0.1)">🎓</div>
+            <span class="client-name">School of Interprice</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(255,107,107,0.1)">⚗️</div>
+            <span class="client-name">BrightLabs</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(0,201,255,0.1)">🎨</div>
+            <span class="client-name">CreativeStudio</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(81,207,102,0.1)">📡</div>
+            <span class="client-name">LiveRecording Co.</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(123,95,245,0.1)">🌱</div>
+            <span class="client-name">AgriTech NG</span>
+          </div>
+          <!-- Set 2 (duplicate for seamless loop) -->
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(0,201,255,0.1)">🏛️</div>
+            <span class="client-name">Zoel Agro Limited</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(81,207,102,0.1)">⛪</div>
+            <span class="client-name">Altar &amp; Throne</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(123,95,245,0.1)">🎥</div>
+            <span class="client-name">Christine Studio</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(255,212,59,0.1)">🎓</div>
+            <span class="client-name">School of Interprice</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(255,107,107,0.1)">⚗️</div>
+            <span class="client-name">BrightLabs</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(0,201,255,0.1)">🎨</div>
+            <span class="client-name">CreativeStudio</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(81,207,102,0.1)">📡</div>
+            <span class="client-name">LiveRecording Co.</span>
+          </div>
+          <div class="client-item">
+            <div class="client-icon" style="background:rgba(123,95,245,0.1)">🌱</div>
+            <span class="client-name">AgriTech NG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
@@ -2288,8 +2575,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Debug: Check if elements exist
-  // Debug: Check if elements exist
   /* ========== Mobile Menu ========== */
   const mobileBtn = document.getElementById('mobileBtn');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -2355,7 +2640,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollY = window.scrollY;
     
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - NAV_HEIGHT - 100;
+      const sectionTop = section.offsetTop - NAV_HEIGHT - 50; // adjusted for better accuracy
       const sectionHeight = section.offsetHeight;
       const sectionId = section.getAttribute('id');
       
@@ -2663,7 +2948,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-
+  /* ========== FAQ Accordion (FIX) ========== */
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true' ? false : true;
+      btn.setAttribute('aria-expanded', expanded);
+      btn.classList.toggle('open', expanded);
+      const answerId = btn.getAttribute('aria-controls');
+      const answer = document.getElementById(answerId);
+      if (answer) {
+        answer.classList.toggle('open', expanded);
+      }
+    });
+  });
 });
   </script>
 </body>
