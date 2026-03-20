@@ -339,6 +339,187 @@ textarea.form-input{resize:vertical;min-height:120px}
 .avail-note p:first-child::before{content:'';width:6px;height:6px;border-radius:50%;background:#80A8FF;flex-shrink:0;animation:dotPulse 1.8s ease-in-out infinite}
 .avail-note p:last-child{font-size:.79rem;color:rgba(255,255,255,.5);line-height:1.5}
 
+/* ── Experience Timeline ── */
+.timeline {
+  position: relative;
+  padding-left: clamp(24px, 5vw, 40px);
+  max-width: 760px;
+  margin: 0 auto;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: clamp(10px, 2vw, 16px);
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent2), var(--accent), transparent);
+  border-radius: 2px;
+}
+.tl-item {
+  position: relative;
+  margin-bottom: clamp(24px, 5vw, 36px);
+  padding-left: clamp(24px, 5vw, 32px);
+}
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot {
+  position: absolute;
+  left: calc(-1 * clamp(24px, 5vw, 40px) + clamp(10px, 2vw, 16px) - 6px);
+  top: 6px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 0 0 4px rgba(0,201,255,0.1), 0 0 16px rgba(0,201,255,0.3);
+  transition: var(--spring);
+  flex-shrink: 0;
+}
+.tl-item:hover .tl-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(0,201,255,0.15), 0 0 24px rgba(0,201,255,0.5);
+  transform: scale(1.2);
+}
+.tl-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  display: block;
+}
+.tl-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: clamp(16px, 3vw, 22px);
+  transition: var(--spring);
+  position: relative;
+  overflow: hidden;
+}
+.tl-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent2), var(--accent));
+  border-radius: 0 0 0 14px;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.tl-item:hover .tl-card::before { opacity: 1; }
+.tl-item:hover .tl-card {
+  transform: translateX(6px);
+  border-color: rgba(0,201,255,0.15);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+}
+.tl-role {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: -0.2px;
+}
+.tl-company {
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.tl-desc {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0;
+}
+.tl-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.tl-tag {
+  font-size: 0.72rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(123,95,245,0.08);
+  border: 1px solid rgba(123,95,245,0.18);
+  color: rgba(180,165,255,0.9);
+  font-weight: 600;
+}
+
+/* ── Process / How I Work ── */
+.process-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 1px; }
+}
+.process-step {
+  padding: clamp(24px, 4vw, 36px);
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+  transition: var(--spring);
+  overflow: hidden;
+  cursor: default;
+}
+.process-step:first-child { border-radius: 20px 0 0 0; }
+.process-step:nth-child(2) { border-radius: 0 20px 0 0; }
+.process-step:nth-child(3) { border-radius: 0 0 0 20px; }
+.process-step:last-child { border-radius: 0 0 20px 0; }
+@media (max-width: 767px) {
+  .process-step { border-radius: 0; }
+  .process-step:first-child { border-radius: 20px 20px 0 0; }
+  .process-step:last-child { border-radius: 0 0 20px 20px; }
+}
+.process-step::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,201,255,0.05), rgba(123,95,245,0.04));
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.process-step:hover::before { opacity: 1; }
+.process-step:hover { transform: scale(1.02); z-index: 2; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border-color: rgba(0,201,255,0.15); }
+.step-num {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, rgba(0,201,255,0.15), rgba(123,95,245,0.1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  letter-spacing: -3px;
+}
+.step-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,201,255,0.08);
+  border: 1px solid rgba(0,201,255,0.15);
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-size: 1.3rem;
+  transition: var(--spring);
+}
+.process-step:hover .step-icon {
+  background: rgba(0,201,255,0.15);
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 8px 24px rgba(0,201,255,0.15);
+}
+.step-title { font-size: clamp(1.05rem, 2.5vw, 1.2rem); font-weight: 700; margin-bottom: 10px; }
+.step-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+
 /* ══ FAQ ══ */
 .faq-list{max-width:740px;margin:0 auto}
 .faq-item{border-bottom:1px solid var(--border)}
@@ -422,7 +603,9 @@ textarea.form-input{resize:vertical;min-height:120px}
       <a href="#projects"     class="nav-link">Projects</a>
       <a href="#testimonials" class="nav-link">Reviews</a>
       <a href="#contact"      class="nav-link">Contact</a>
-      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#experience"      class="nav-link">Experience</a>
+      <a href="#process"      class="nav-link">How I Work</a>
+      <a href="#faq"      class="nav-link">FAQ</a>
       <a href="#contact" class="btn-primary" style="margin-left:10px">Hire Me</a>
     </nav>
     <button id="mobileBtn" class="mobile-toggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open navigation menu">
@@ -443,13 +626,15 @@ textarea.form-input{resize:vertical;min-height:120px}
       <button id="mobileClose" class="mobile-close" type="button" aria-label="Close navigation menu">✕</button>
     </div>
     <nav class="mobile-nav" aria-label="Mobile navigation">
-      <a href="#home"         class="mobile-link">Home</a>
-      <a href="#about"        class="mobile-link">About</a>
-      <a href="#skills"       class="mobile-link">Skills</a>
-      <a href="#projects"     class="mobile-link">Projects</a>
-      <a href="#testimonials" class="mobile-link">Reviews</a>
-      <a href="#contact"      class="mobile-link">Contact</a>
-      <a href="#faq" class="mobile-link">FAQ</a>
+      <a href="#home"         class="nav-link">Home</a>
+      <a href="#about"        class="nav-link">About</a>
+      <a href="#skills"       class="nav-link">Skills</a>
+      <a href="#projects"     class="nav-link">Projects</a>
+      <a href="#testimonials" class="nav-link">Reviews</a>
+      <a href="#contact"      class="nav-link">Contact</a>
+      <a href="#experience"      class="nav-link">Experience</a>
+      <a href="#process"      class="nav-link">How I Work</a>
+      <a href="#faq"      class="nav-link">FAQ</a>
       <div class="mobile-divider"></div>
       <a href="#contact" class="btn-primary" style="justify-content:center;width:100%">Hire Me</a>
     </nav>
@@ -865,6 +1050,146 @@ textarea.form-input{resize:vertical;min-height:120px}
   </div>
 </section>
 
+<!-- ── EXPERIENCE TIMELINE ── -->
+    <section id="experience" class="section reveal">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-number">05 / Experience</span>
+          <h2>Experience &amp; Journey</h2>
+          <p class="muted">My professional path — from first line of code to delivering production-ready web experiences.</p>
+        </header>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <span class="tl-dot"></span>
+            <span class="tl-date">2024 — Present</span>
+            <div class="tl-card">
+              <h3 class="tl-role">Freelance Frontend Developer</h3>
+              <p class="tl-company">Independent · Remote</p>
+              <p class="tl-desc">
+                Building custom web solutions for clients across Nigeria and beyond. Delivered 10+ projects in the last year
+                spanning e-commerce, church platforms, portfolio sites, and registration systems. Consistently achieving
+                Lighthouse scores of 95+ and WCAG AA compliance.
+              </p>
+              <div class="tl-tags">
+                <span class="tl-tag">HTML5</span><span class="tl-tag">CSS3</span><span class="tl-tag">JavaScript</span><span class="tl-tag">Figma</span><span class="tl-tag">Performance</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-dot"></span>
+            <span class="tl-date">2023 — 2024</span>
+            <div class="tl-card">
+              <h3 class="tl-role">Junior Frontend Developer</h3>
+              <p class="tl-company">Contract Projects · Kaduna, Nigeria</p>
+              <p class="tl-desc">
+                Worked on client websites and collaborated with UI/UX designers to translate Figma mockups into fully responsive,
+                accessible web pages. Introduced lazy-loading strategies and image optimization workflows that reduced page
+                load times by an average of 40%.
+              </p>
+              <div class="tl-tags">
+                <span class="tl-tag">Responsive Design</span><span class="tl-tag">CSS Grid</span><span class="tl-tag">Flexbox</span><span class="tl-tag">Git</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-dot"></span>
+            <span class="tl-date">2022 — 2023</span>
+            <div class="tl-card">
+              <h3 class="tl-role">Self-Taught Web Developer</h3>
+              <p class="tl-company">Personal Projects &amp; Learning</p>
+              <p class="tl-desc">
+                Completed structured online curricula covering HTML5, CSS3, and vanilla JavaScript. Built 15+ personal
+                and practice projects. Dived deep into web accessibility, semantic markup, and performance optimization as
+                core disciplines — not afterthoughts.
+              </p>
+              <div class="tl-tags">
+                <span class="tl-tag">HTML Fundamentals</span><span class="tl-tag">CSS Animations</span><span class="tl-tag">Vanilla JS</span><span class="tl-tag">WCAG</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-dot" style="border-color:var(--accent2);box-shadow:0 0 0 4px rgba(123,95,245,0.1),0 0 16px rgba(123,95,245,0.3)"></span>
+            <span class="tl-date" style="color:var(--accent2)">2021 — 2022</span>
+            <div class="tl-card">
+              <h3 class="tl-role">First Line of Code</h3>
+              <p class="tl-company">The Beginning</p>
+              <p class="tl-desc">
+                Started the journey with HTML basics and a curiosity that wouldn't quit. Built a simple personal webpage
+                and was hooked. Committed to mastering the fundamentals before touching any framework — a decision that
+                continues to pay dividends today.
+              </p>
+              <div class="tl-tags">
+                <span class="tl-tag" style="border-color:rgba(123,95,245,0.25);color:rgba(180,165,255,0.9)">HTML Basics</span>
+                <span class="tl-tag" style="border-color:rgba(123,95,245,0.25);color:rgba(180,165,255,0.9)">CSS Basics</span>
+                <span class="tl-tag" style="border-color:rgba(123,95,245,0.25);color:rgba(180,165,255,0.9)">The Spark</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW I WORK (PROCESS) ── -->
+    <section id="process" class="section reveal">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-number">07 / Process</span>
+          <h2>How I Work</h2>
+          <p class="muted">A simple, transparent 4-step process that ensures every project ships on time, on budget, and beyond expectations.</p>
+        </header>
+
+        <div class="process-grid">
+          <div class="process-step">
+            <span class="step-num">01</span>
+            <div class="step-icon">🔍</div>
+            <h3 class="step-title">Discovery &amp; Planning</h3>
+            <p class="step-desc">
+              We start with a detailed conversation about your goals, audience, and brand. I map out the site structure,
+              define scope, agree on timelines, and document every requirement before writing a single line of code.
+              No surprises — ever.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <span class="step-num">02</span>
+            <div class="step-icon">🎨</div>
+            <h3 class="step-title">Design &amp; Prototyping</h3>
+            <p class="step-desc">
+              Whether you bring Figma files or need me to design from scratch, I create pixel-perfect layouts reviewed
+              and approved before development begins. Typography, spacing, color systems, and component states are all
+              locked in at this stage.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <span class="step-num">03</span>
+            <div class="step-icon">💻</div>
+            <h3 class="step-title">Development &amp; Testing</h3>
+            <p class="step-desc">
+              Clean, semantic HTML. Efficient, maintainable CSS. Vanilla JavaScript with no bloat. Every build goes through
+              cross-browser testing, mobile responsiveness checks, Lighthouse audits, and accessibility reviews before
+              you see it.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <span class="step-num">04</span>
+            <div class="step-icon">🚀</div>
+            <h3 class="step-title">Launch &amp; Support</h3>
+            <p class="step-desc">
+              Deployment is handled with care — optimized assets, proper meta tags, sitemap, and canonical URLs. After
+              launch, you get 30 days of free support to catch any edge cases and ensure everything runs perfectly in
+              the real world.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
 <!-- ══════ FAQ ══════ -->
 <section id="faq" class="section">
   <div class="container">
@@ -875,7 +1200,7 @@ textarea.form-input{resize:vertical;min-height:120px}
     </div>
     <div class="faq-list reveal">
       <div class="faq-item"><button class="faq-btn" id="faq-q1" aria-expanded="false" aria-controls="faq-1">What technologies do you use?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" id="faq-1" role="region" aria-labelledby="faq-q1"><p>I specialize in the core web stack: HTML5, CSS3, and vanilla JavaScript (ES6+). I also work with Git for version control, Figma for design handoff, and Lighthouse for performance auditing. I avoid unnecessary frameworks where native tech delivers better performance.</p></div></div>
-      <div class="faq-item"><button class="faq-btn" id="faq-q2" aria-expanded="false" aria-controls="faq-2">How long does a typical project take?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" id="faq-2" role="region" aria-labelledby="faq-q2"><p>Timelines depend on scope. A simple 5-page website typically takes 2-3 days. A professional multi-page site with custom animations runs 3–5 days. Complex builds are quoted individually. I always provide a realistic timeline upfront and honor it.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" id="faq-q2" aria-expanded="false" aria-controls="faq-2">How long does a typical project take?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" id="faq-2" role="region" aria-labelledby="faq-q2"><p>Timelines depend on scope. A simple 5-page website typically takes 5–7 days. A professional multi-page site with custom animations runs 10–14 days. Complex builds are quoted individually. I always provide a realistic timeline upfront and honor it.</p></div></div>
       <div class="faq-item"><button class="faq-btn" id="faq-q3" aria-expanded="false" aria-controls="faq-3">Do you work with clients outside Nigeria?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" id="faq-3" role="region" aria-labelledby="faq-q3"><p>Absolutely. I work with clients globally. My timezone is WAT (UTC+1) but I'm flexible to accommodate US, UK, and European clients. Communication via email, WhatsApp, or video call.</p></div></div>
       <div class="faq-item"><button class="faq-btn" id="faq-q4" aria-expanded="false" aria-controls="faq-4">What do you need from me to get started?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" id="faq-4" role="region" aria-labelledby="faq-q4"><p>A clear description of what you want, brand assets (logo, colors, fonts), reference sites you admire, and Figma files if available. No designs? No problem — I can work from a brief and create wireframes before coding.</p></div></div>
       <div class="faq-item"><button class="faq-btn" id="faq-q5" aria-expanded="false" aria-controls="faq-5">Will my website be mobile-friendly and fast?<span class="faq-icon" aria-hidden="true">+</span></button><div class="faq-answer" id="faq-5" role="region" aria-labelledby="faq-q5"><p>Yes — without exception. Every project is mobile-first, tested on multiple screen sizes. I optimize images, minimize render-blocking resources, and target 90+ Lighthouse scores. I include the audit report on delivery.</p></div></div>
@@ -893,7 +1218,6 @@ textarea.form-input{resize:vertical;min-height:120px}
     <div class="marquee-track">
       <div class="client-pill"><span class="client-icon" aria-hidden="true">🏛️</span><span class="client-name">Zoel Agro Limited</span></div>
       <div class="client-pill"><span class="client-icon" aria-hidden="true">⛪</span><span class="client-name">Altar &amp; Throne</span></div>
-      <div class="client-pill"><span class="client-icon" aria-hidden="true">⛪</span><span class="client-name">TempleBreed &amp; International</span></div>
       <div class="client-pill"><span class="client-icon" aria-hidden="true">🎥</span><span class="client-name">Christine Studio</span></div>
       <div class="client-pill"><span class="client-icon" aria-hidden="true">🎓</span><span class="client-name">School of Interprice</span></div>
       <div class="client-pill"><span class="client-icon" aria-hidden="true">⚗️</span><span class="client-name">BrightLabs</span></div>
